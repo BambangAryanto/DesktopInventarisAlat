@@ -7,7 +7,8 @@ namespace DesktopInventarisAlat
 {
     public partial class FormTransaksi : Form
     {
-        private string connString = "Server=localhost;Database=db_inventaris;Uid=root;Pwd=;";
+        // PERBAIKAN: Sesuaikan nama database dengan phpMyAdmin (inventaris_desktop)
+        private string connString = "Server=localhost;Database=inventaris_desktop;Uid=root;Pwd=;";
         private DataTable dtCart = new DataTable();
 
         public FormTransaksi()
@@ -19,7 +20,7 @@ namespace DesktopInventarisAlat
         {
             InitDataTable();
             GenerateNoTransaksi();
-            LoadDataPeminjam(); // Muat daftar peminjam ke ComboBox saat form dibuka
+            LoadDataPeminjam();
             dtpTanggal.Value = DateTime.Now;
             dtpTglKembali.Value = DateTime.Now.AddDays(3);
         }
@@ -27,6 +28,7 @@ namespace DesktopInventarisAlat
         // 1. Inisialisasi Keranjang
         private void InitDataTable()
         {
+            dtCart = new DataTable();
             dtCart.Columns.Add("kode_alat", typeof(string));
             dtCart.Columns.Add("nama_alat", typeof(string));
             dtCart.Columns.Add("jumlah", typeof(int));
@@ -35,7 +37,7 @@ namespace DesktopInventarisAlat
             dgvCart.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
-        // 2. Load Data Peminjam ke ComboBox Menggunakan id_peminjam
+        // 2. Load Data Peminjam ke ComboBox
         private void LoadDataPeminjam()
         {
             using (MySqlConnection conn = new MySqlConnection(connString))
@@ -49,9 +51,9 @@ namespace DesktopInventarisAlat
                     da.Fill(dtPeminjam);
 
                     cmbPeminjam.DataSource = dtPeminjam;
-                    cmbPeminjam.DisplayMember = "nama_peminjam"; // Tampilan di Form
-                    cmbPeminjam.ValueMember = "id_peminjam";     // Value ID untuk database
-                    cmbPeminjam.SelectedIndex = -1;             // Set default kosong
+                    cmbPeminjam.DisplayMember = "nama_peminjam";
+                    cmbPeminjam.ValueMember = "id_peminjam";
+                    cmbPeminjam.SelectedIndex = -1;
                 }
                 catch (Exception ex)
                 {
@@ -74,7 +76,7 @@ namespace DesktopInventarisAlat
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     object result = cmd.ExecuteScalar();
 
-                    if (result != null)
+                    if (result != null && result != DBNull.Value)
                     {
                         string lastNo = result.ToString();
                         int lastNum = int.Parse(lastNo.Substring(11));
@@ -123,7 +125,7 @@ namespace DesktopInventarisAlat
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error: " + ex.Message);
+                    MessageBox.Show("Error pencarian alat: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -137,8 +139,19 @@ namespace DesktopInventarisAlat
                 return;
             }
 
+            if (!int.TryParse(txtStok.Text, out int stokAda))
+            {
+                MessageBox.Show("Data stok tidak valid!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             int qtyInput = (int)nudJumlah.Value;
-            int stokAda = int.Parse(txtStok.Text);
+
+            if (qtyInput <= 0)
+            {
+                MessageBox.Show("Jumlah pinjam harus lebih dari 0!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             if (qtyInput > stokAda)
             {
@@ -174,7 +187,7 @@ namespace DesktopInventarisAlat
             nudJumlah.Value = 1;
         }
 
-        // 6. Simpan Transaksi dengan id_peminjam Dari ComboBox
+        // 6. Simpan Transaksi
         private void btnSimpan_Click(object sender, EventArgs e)
         {
             if (cmbPeminjam.SelectedValue == null)
@@ -196,14 +209,15 @@ namespace DesktopInventarisAlat
 
                 try
                 {
-                    // A. Insert Header Peminjaman (id_peminjam diambil dari cmbPeminjam.SelectedValue)
+                    // A. Insert Header Peminjaman
                     string qHeader = @"INSERT INTO peminjaman (no_transaksi, id_peminjam, tgl_pinjam, tgl_rencana_kembali, status, keterangan) 
                                        VALUES (@no, @idPeminjam, @tglPinjam, @tglKembali, 'Dipinjam', @ket)";
+
                     MySqlCommand cmdHeader = new MySqlCommand(qHeader, conn, transaction);
                     cmdHeader.Parameters.AddWithValue("@no", txtNoTransaksi.Text);
                     cmdHeader.Parameters.AddWithValue("@idPeminjam", cmbPeminjam.SelectedValue);
-                    cmdHeader.Parameters.AddWithValue("@tglPinjam", dtpTanggal.Value.ToString("yyyy-MM-dd HH:mm:ss"));
-                    cmdHeader.Parameters.AddWithValue("@tglKembali", dtpTglKembali.Value.ToString("yyyy-MM-dd"));
+                    cmdHeader.Parameters.AddWithValue("@tglPinjam", dtpTanggal.Value);
+                    cmdHeader.Parameters.AddWithValue("@tglKembali", dtpTglKembali.Value);
                     cmdHeader.Parameters.AddWithValue("@ket", txtKeterangan.Text.Trim());
                     cmdHeader.ExecuteNonQuery();
 
