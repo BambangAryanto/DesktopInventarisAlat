@@ -38,6 +38,7 @@ namespace DesktopInventarisAlat
             this.dataRuanganToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataAlatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.transaksiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.peminjamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,7 +68,8 @@ namespace DesktopInventarisAlat
             this.dataKategoriToolStripMenuItem,
             this.dataRuanganToolStripMenuItem,
             this.dataAlatToolStripMenuItem,
-            this.transaksiToolStripMenuItem});
+            this.transaksiToolStripMenuItem,
+            this.peminjamToolStripMenuItem});
             this.dataMasterToolStripMenuItem.Name = "dataMasterToolStripMenuItem";
             this.dataMasterToolStripMenuItem.Size = new System.Drawing.Size(82, 20);
             this.dataMasterToolStripMenuItem.Text = "Data Master";
@@ -114,6 +116,13 @@ namespace DesktopInventarisAlat
             this.transaksiToolStripMenuItem.Text = "Transaksi";
             this.transaksiToolStripMenuItem.Click += new System.EventHandler(this.transaksiToolStripMenuItem_Click);
             // 
+            // peminjamToolStripMenuItem
+            // 
+            this.peminjamToolStripMenuItem.Name = "peminjamToolStripMenuItem";
+            this.peminjamToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.peminjamToolStripMenuItem.Text = "Peminjam";
+            this.peminjamToolStripMenuItem.Click += new System.EventHandler(this.peminjamToolStripMenuItem_Click);
+            // 
             // FMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -142,5 +151,6 @@ namespace DesktopInventarisAlat
         private System.Windows.Forms.ToolStripMenuItem dataRuanganToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dataAlatToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem transaksiToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem peminjamToolStripMenuItem;
     }
 }

@@ -52,5 +52,11 @@ namespace DesktopInventarisAlat
             FormTransaksi form = new FormTransaksi();
             form.ShowDialog();
         }
+
+        private void peminjamToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormPeminjam form = new FormPeminjam();
+            form.ShowDialog();
+        }
     }
 }

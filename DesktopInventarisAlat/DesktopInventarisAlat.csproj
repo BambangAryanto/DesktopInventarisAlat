@@ -72,6 +72,12 @@
     <Compile Include="FormKategori.Designer.cs">
       <DependentUpon>FormKategori.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormPeminjaman.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPeminjaman.Designer.cs">
+      <DependentUpon>FormPeminjaman.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormRole.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +121,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormKategori.resx">
       <DependentUpon>FormKategori.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPeminjaman.resx">
+      <DependentUpon>FormPeminjaman.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormRole.resx">
       <DependentUpon>FormRole.cs</DependentUpon>
