@@ -11,7 +11,7 @@ namespace DesktopInventarisAlat
 {
     class DB
     {
-        public static MySqlConnection koneksi = new MySqlConnection("server = 127.0.0.1; username = 'root'; password = ''; database = 'inventaris_desktop'");
+        public static MySqlConnection koneksi = new MySqlConnection("server = 127.0.0.1; username = 'root'; password = ''; database = 'inventaris_alat'");
         public static DataSet ds = new DataSet();
         public static IDataAdapter da;
         public static MySqlCommand perintah;
