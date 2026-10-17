@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.IO;
+using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
 
 namespace DesktopInventarisAlat
 {
@@ -337,6 +340,18 @@ namespace DesktopInventarisAlat
                     .Cells["keterangan"]
                     .Value.ToString();
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ReportDocumnet rpt = new ReportDocumnet();
+            rpt.load("report data kategori.rpt");
+
+            string pdfPath = pdfPath.Combine(pdfPath.GetTampPath(), "report data ketegori.pdf");
+            rpt.ExportToDisk(ExportFormatType.PortableDocFormat, pdfPath);
+
+            // membuka pdf
+            System.Diagnostics.Process.Start(pdfPath);
         }
     }
 }

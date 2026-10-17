@@ -78,6 +78,12 @@
     <Compile Include="FormPeminjaman.Designer.cs">
       <DependentUpon>FormPeminjaman.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReport.Designer.cs">
+      <DependentUpon>FormReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormRole.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +130,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormPeminjaman.resx">
       <DependentUpon>FormPeminjaman.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormReport.resx">
+      <DependentUpon>FormReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormRole.resx">
       <DependentUpon>FormRole.cs</DependentUpon>
