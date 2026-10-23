@@ -637,5 +637,18 @@ namespace DesktopInventarisAlat
                     .Value.ToString();
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FormReport frmViewer = new FormReport("Laporan Peminjaman.rpt");
+                frmViewer.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Gagal Mencetak Laporan : " + ex.Message);
+            }
+        }
     }
 }
