@@ -39,6 +39,7 @@ namespace DesktopInventarisAlat
             this.dataAlatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.transaksiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.peminjamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -69,7 +70,8 @@ namespace DesktopInventarisAlat
             this.dataRuanganToolStripMenuItem,
             this.dataAlatToolStripMenuItem,
             this.transaksiToolStripMenuItem,
-            this.peminjamToolStripMenuItem});
+            this.peminjamToolStripMenuItem,
+            this.reportToolStripMenuItem});
             this.dataMasterToolStripMenuItem.Name = "dataMasterToolStripMenuItem";
             this.dataMasterToolStripMenuItem.Size = new System.Drawing.Size(82, 20);
             this.dataMasterToolStripMenuItem.Text = "Data Master";
@@ -123,6 +125,13 @@ namespace DesktopInventarisAlat
             this.peminjamToolStripMenuItem.Text = "Peminjam";
             this.peminjamToolStripMenuItem.Click += new System.EventHandler(this.peminjamToolStripMenuItem_Click);
             // 
+            // reportToolStripMenuItem
+            // 
+            this.reportToolStripMenuItem.Name = "reportToolStripMenuItem";
+            this.reportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.reportToolStripMenuItem.Text = "Report";
+            this.reportToolStripMenuItem.Click += new System.EventHandler(this.reportToolStripMenuItem_Click);
+            // 
             // FMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -152,5 +161,6 @@ namespace DesktopInventarisAlat
         private System.Windows.Forms.ToolStripMenuItem dataAlatToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem transaksiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem peminjamToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reportToolStripMenuItem;
     }
 }

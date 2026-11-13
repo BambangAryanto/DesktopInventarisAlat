@@ -7,7 +7,7 @@ namespace DesktopInventarisAlat
 {
     public partial class FormTransaksi : Form
     {
-        private string connString = "Server=localhost;Database=inventaris_desktop;Uid=root;Pwd=;";
+        private string connString = "Server=localhost;Database=inventaris_alat;Uid=root;Pwd=;";
         private DataTable dtCart = new DataTable();
         private int currentIdAlat = 0;
 

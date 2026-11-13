@@ -67,6 +67,7 @@ namespace DesktopInventarisAlat
             // 
             this.TXTPASS.Location = new System.Drawing.Point(120, 222);
             this.TXTPASS.Name = "TXTPASS";
+            this.TXTPASS.PasswordChar = '.';
             this.TXTPASS.Size = new System.Drawing.Size(143, 20);
             this.TXTPASS.TabIndex = 3;
             // 

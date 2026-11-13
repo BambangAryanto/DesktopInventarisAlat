@@ -58,5 +58,11 @@ namespace DesktopInventarisAlat
             FormPeminjam form = new FormPeminjam();
             form.ShowDialog();
         }
+
+        private void reportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormReport form = new FormReport();
+            form.ShowDialog();
+        }
     }
 }

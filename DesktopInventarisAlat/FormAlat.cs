@@ -69,7 +69,6 @@ namespace DesktopInventarisAlat
                     "alat.merk, " +
                     "alat.tipe, " +
                     "alat.tahun_pembuatan, " +
-                    "alat.jumlah, " +
                     "alat.kondisi, " +
                     "alat.keterangan " +
                     "FROM alat " +

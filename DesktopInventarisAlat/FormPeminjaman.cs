@@ -7,7 +7,7 @@ namespace DesktopInventarisAlat
 {
     public partial class FormPeminjam : Form
     {
-        private string connString = "Server=localhost;Database=inventaris_desktop;Uid=root;Pwd=;";
+        private string connString = "Server=localhost;Database= 'inventaris_alat;Uid=root;Pwd=;";
         private int selectedIdPeminjam = 0;
 
         public FormPeminjam()

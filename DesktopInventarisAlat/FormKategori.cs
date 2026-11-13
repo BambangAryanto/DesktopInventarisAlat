@@ -344,10 +344,10 @@ namespace DesktopInventarisAlat
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ReportDocumnet rpt = new ReportDocumnet();
-            rpt.load("report data kategori.rpt");
+            ReportDocument rpt = new ReportDocument();
+            rpt.Load("report data kategori.rpt");
 
-            string pdfPath = pdfPath.Combine(pdfPath.GetTampPath(), "report data ketegori.pdf");
+            string pdfPath = Path.Combine(Path.GetTempPath(), "report data ketegori.pdf");
             rpt.ExportToDisk(ExportFormatType.PortableDocFormat, pdfPath);
 
             // membuka pdf
